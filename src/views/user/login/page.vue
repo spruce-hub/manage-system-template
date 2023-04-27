@@ -64,7 +64,6 @@ import { generateRoutes } from '@/router/generateRoutes'
 import { useRoute } from 'vue-router'
 import { useUserInfo } from '@/store/userInfo'
 import { useMenu } from '@/store/menu'
-import { wxContext } from '@/hooks/useOperation'
 import md5 from 'js-md5'
 import { FormInst } from 'naive-ui'
 const router = useRouter()
@@ -109,13 +108,7 @@ function submit() {
         Cookie.set('token', res.data.access_token, {
           expires: form.value.keep ? 30 : 1
         })
-        if (route.query.code) {
-          wxContext(route.query.code).then(async (data) => {
-            await init(data)
-          })
-        } else {
-          await init(res)
-        }
+        await init(res)
       })
       .catch(() => {
         loading.value = false
