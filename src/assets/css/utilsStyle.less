@@ -1,0 +1,182 @@
+/*
+  功能性样式class
+  一般是颗粒度极小的样式块，参考tailwind.css
+  https://tailwindcss.com/docs/installation
+*/
+
+/*****************字体系列*******************/
+.text-comment {
+  font-size: 12px;
+  color: @text-c-2;
+  font-weight: normal;
+}
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.weight-600 {
+  font-weight: 600;
+}
+.font-bold {
+  font-weight: bold;
+}
+// 定义字体(px)单位
+@fontSize: 12, 14, 16, 18, 20, 22, 24;
+each(@fontSize, {
+  .text-@{value} {
+    font-size: (@value * 1px);
+  }
+});
+// 行高
+@leading: 16, 18, 20, 22, 24, 26, 28;
+each(@leading, {
+  .leading-@{value} {
+    line-height: (@value * 1px);
+  }
+});
+// 排版
+.whitespace-pre {
+  white-space: pre;
+}
+
+/*******************颜色系列*********************/
+.main-c {
+  color: @main-c;
+}
+.red-c {
+  color: @red;
+}
+.text-c-0 {
+  color: @text-c-0;
+}
+.text-c-1 {
+  color: @text-c-1;
+}
+.text-c-2 {
+  color: @text-c-2;
+}
+.bg-white {
+  background: @white;
+}
+
+/****************盒模型系列***************/
+// 宽度
+.w-full {
+  width: 100%;
+}
+// 边框
+.border-normal {
+  border: 1px solid @line-c-0;
+}
+// 间距系列
+@space: 4, 8, 10, 14, 16, 20, 24, 30, 40;
+each(@space, {
+  .m-@{value} {
+    margin: (@value * 1px);
+  }
+  .p-@{value} {
+    padding: (@value * 1px);
+  }
+  .mx-@{value} {
+    margin: 0 (@value * 1px);
+  }
+  .my-@{value} {
+    margin: (@value * 1px) 0;
+  }
+  .px-@{value} {
+    padding: 0 (@value * 1px);
+  }
+  .py-@{value} {
+    padding: (@value * 1px) 0;
+  }
+  .mt-@{value} {
+    margin-top: (@value * 1px);
+  }
+  .mr-@{value} {
+    margin-right:(@value * 1px);
+  }
+  .mb-@{value} {
+    margin-bottom: (@value * 1px);
+  }
+  .ml-@{value} {
+    margin-left: (@value * 1px);
+  }
+  .pt-@{value} {
+    padding-top: (@value * 1px);
+  }
+  .pr-@{value} {
+    padding-right:(@value * 1px);
+  }
+  .pb-@{value} {
+    padding-bottom: (@value * 1px);
+  }
+  .pl-@{value} {
+    padding-left: (@value * 1px);
+  }
+});
+
+/****************transform系列***************/
+.rotate-90 {
+  transform: rotate(90deg);
+}
+.rotate-270 {
+  transform: rotate(-90deg);
+}
+
+/*****************弹性布局系列********************/
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
+}
+.justify-around {
+  justify-content: space-around;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-initial {
+  flex: 1 1 auto;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/*****************交互系列********************/
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/*****************组件库系列********************/
+.form-item-flex-col {
+  .n-form-item-blank {
+    flex-direction: column;
+    align-items: start;
+  }
+}

@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a,
+li,
+button,
+input,
+select,
+textarea {
+  list-style: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  resize: none;
+}
+a {
+  color: #333333;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: #c4c4c4;
+}
+::-webkit-scrollbar-track {
+  border-radius: 6px;
+  background: initial;
+}
