@@ -196,14 +196,6 @@ watch(
         }
       }
     }
-    console.log(activeIndex.value)
-    console.log(pageMenu.value)
-    if (pageMenu.value[activeIndex.value].route_name === val) {
-      menuStore.setMenuName(pageMenu.value[activeIndex.value].name)
-      activeKey.value = pageMenu.value[activeIndex.value].id
-      collapsed.value = true
-      return
-    }
   },
   {
     immediate: true
