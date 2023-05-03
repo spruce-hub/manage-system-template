@@ -6,7 +6,7 @@
       bordered
       title="日志管理"
       :singleLine="false"
-      api="admin-api/admin-user/log/list"
+      api="admin-api/admin/log/list"
       :filterList="filterList"
       @update:checked-row-keys="tableCheckRowHandle"
       @onSelect="onSelect"

@@ -176,7 +176,7 @@ const actionColumns = ref(<any>[
 const tabs = ref(<Array<string>>['登录日志', '操作日志'])
 async function open(row) {
   actionFilterList.value[0].options = await (
-    await http.get('admin-api/admin-user/log/options')
+    await http.get('admin-api/admin/log/options')
   ).data
   items.value = row
   change(0)
@@ -185,7 +185,7 @@ async function open(row) {
 function change(index) {
   checkedRowKeys.value = []
   active.value = index
-  items.value.api = `admin-api/admin-user/log/${
+  items.value.api = `admin-api/admin/log/${
     index === 0 ? 'login' : 'action'
   }-list?uid=${items.value.id}`
 }

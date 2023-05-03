@@ -8,10 +8,10 @@
         <div class="logo-wrap">
           <img
             src="@/assets/img/nav-icon.png"
-            alt="***后台"
+            alt="零爱商城后台"
             style="width: 171px; padding-right: 5px"
           />
-          <p>登录&nbsp;&nbsp;***后台</p>
+          <p>登录&nbsp;&nbsp;零爱商城后台</p>
         </div>
         <n-form
           label-placement="top"
@@ -66,6 +66,7 @@ import { useUserInfo } from '@/store/userInfo'
 import { useMenu } from '@/store/menu'
 import md5 from 'js-md5'
 import { FormInst } from 'naive-ui'
+import { http, saveToken, setHttpToken } from '@/apis'
 const router = useRouter()
 const route = useRoute()
 const form = ref({
@@ -102,28 +103,28 @@ function submit() {
     }
     loading.value = true
     http
-      .post('/admin-api/login', item)
-      .then(async (res) => {
-        await setHttpToken(res.data.access_token)
-        Cookie.set('token', res.data.access_token, {
+      .post('/admin-api/admin/login', { data: item })
+      .then((res) => {
+        window.$message.success('登录成功')
+        const { data } = res
+        saveToken(data.token_type + ' ' + data.access_token, {
           expires: form.value.keep ? 30 : 1
         })
-        await init(res)
+        setHttpToken()
+        saveCookieIfKeep()
+        menuFn()
       })
-      .catch(() => {
+      .finally(() => {
         loading.value = false
       })
   })
 }
-async function init(res) {
-  window.$message.success('登录成功')
+function saveCookieIfKeep() {
   if (form.value.keep) {
     Cookie.set('username', form.value.account, { expires: 30 })
     Cookie.set('password', form.value.password, { expires: 30 })
     Cookie.set('remember', '1', { expires: 30 })
-    Cookie.set('token_type', res.data.token_type, { expires: 30 })
   }
-  menuFn()
 }
 // 登录完成获取菜单权限，进行跳转
 async function menuFn() {

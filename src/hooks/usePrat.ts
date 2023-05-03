@@ -197,7 +197,7 @@ function renderOptionFn(
  * **/
 export function useButton(
   name: string,
-  cd?: function,
+  cd?: (e: MouseEvent) => void,
   className?: string,
   disabled?: boolean
 ) {
@@ -224,7 +224,7 @@ export function useButton(
  * @param {cd} 返回的事件函数
  * **/
 
-export function useIconButton(name: string, cd?: function) {
+export function useIconButton(name: string, cd?: (e: MouseEvent) => void) {
   if (name === '删除') {
     return h(IconBtn, {
       icon: 'IconDeleteFill',
@@ -244,7 +244,11 @@ export function useIconButton(name: string, cd?: function) {
  * @param {className} 类名称
  * @param {cd} 返回的事件函数
  * **/
-export function usePopover(name: string, className?: string, cd?: function) {
+export function usePopover(
+  name: string,
+  className?: string,
+  cd?: (e: MouseEvent) => void
+) {
   return h(
     NPopover,
     {
@@ -279,7 +283,11 @@ export function usePopover(name: string, className?: string, cd?: function) {
  * @param {cd} 返回的事件函数
  * **/
 
-export function useImage(name: string, className?: string, cd?: function) {
+export function useImage(
+  name: string,
+  className?: string,
+  cd?: (e: MouseEvent) => void
+) {
   return h(
     NPopover,
     {
@@ -359,7 +367,7 @@ export function useTag(name: string, type?: string, style?: object) {
  * **/
 interface UpdateItem {
   value?: string
-  click?: function
+  click?: (e: MouseEvent) => void
   uploadType?: Array<string>
   name?: string
   other?: any

@@ -8,13 +8,14 @@ import { generateRoutes } from './router/generateRoutes'
 import '@/assets/css/reset.css'
 import '@/assets/css/naive-ui-global.less'
 import { getToken } from './apis'
+import { SpruceIcons } from './plugin'
 
 mountApp()
 
 function mountApp() {
   const app = createApp(AppRoot)
   const pinia = createPinia()
-  app.use(router).use(pinia)
+  app.use(router).use(pinia).use(SpruceIcons)
   app.mount('#app')
 
   router.isReady().then(() => {
@@ -27,6 +28,7 @@ function mountApp() {
         generateRoutes(pageMenu)
         const currentRoute = router.currentRoute.value
         // 检测是否有权限进入当前页面
+        console.log(currentRoute.path)
         if (
           router.hasRoute(currentRoute.path) &&
           currentRoute.path !== '/login'

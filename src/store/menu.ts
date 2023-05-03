@@ -13,7 +13,7 @@ export const useMenu = defineStore('menu', {
       this.name = value
     },
     async fetchPageMenu() {
-      await http.get('admin-api/admin-user/sys-conf/menu').then((res) => {
+      await http.get('admin-api/admin/sys-conf/menu').then((res) => {
         this.menu = res.data.tree
       })
       return this.menu

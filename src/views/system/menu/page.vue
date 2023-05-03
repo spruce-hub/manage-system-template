@@ -4,7 +4,7 @@
       ref="tableRef"
       :columns="columns"
       bordered
-      api="admin-api/admin-user/menu/tree"
+      api="admin-api/admin/menu/tree"
       title="菜单管理"
       :singleLine="false"
       :search="false"
@@ -26,7 +26,7 @@
 import { useMenu } from '@/store'
 import { useButton, useTag } from '@/hooks/usePrat'
 import { useDelete } from '@/hooks/useOperation'
-import Edit from './components/Edit.vue'
+import Edit from './Edit.vue'
 const EditRef = ref(<typeof Edit>{})
 const tableRef = ref(<any>{})
 const DialogRef = ref(<any>{})
@@ -39,10 +39,10 @@ const columns = ref([
     title: '菜单名称',
     key: 'name'
   },
-  // {
-  //   title: '图标',
-  //   key: 'icon'
-  // },
+  {
+    title: '图标',
+    key: 'icon'
+  },
   {
     title: '路由名称',
     key: 'route_name'
@@ -138,7 +138,7 @@ function deleteDia(name, id = undefined) {
     tableEl: tableRef.value,
     name,
     form: { id },
-    api: 'admin-api/admin-user/menu/destroy',
+    api: 'admin-api/admin/menu/delete',
     success: () => menuStore.fetchPageMenu()
   })
 }

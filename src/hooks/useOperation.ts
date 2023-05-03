@@ -21,9 +21,7 @@ export function useDelete(params) {
     .then(() => {
       element.loading = true
       http
-        .post(api, {
-          ...form
-        })
+        .post(api, { data: form })
         .then((res) => {
           tableEl.dataFn(tableEl.page)
           element.loading = false

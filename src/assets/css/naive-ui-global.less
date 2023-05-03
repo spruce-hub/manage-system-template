@@ -1,3 +1,168 @@
 /*
   naive-ui 的全局样式修改，其作用相当于naive-ui-theme-overrides.ts
 */
+
+.n-card {
+  min-height: 250px;
+  max-height: calc(100vh - 100px);
+  .n-card-header {
+    background: @white;
+    padding: 13px 20px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    border-bottom: 1px solid @line-c-0;
+    .n-card-header__main {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 18px;
+      color: @text-c-0;
+    }
+    .n-base-close {
+      color: @text-c-3;
+    }
+  }
+  .n-card__content{
+    overflow-y: auto;
+  }
+  &.n-card--content-segmented > .n-card__content {
+    padding: 40px 40px 20px;
+  }
+  .n-card__footer {
+    justify-content: flex-end;
+    box-shadow: 0px -1px 0px #eeeeee;
+    padding: 15px 20px;
+    background: #f9faff;
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+    button {
+      width: 90px;
+      margin-left: 10px;
+    }
+  }
+  &.n-card--content-segmented > .n-card__footer {
+    padding-top: 15px;
+  }
+}
+
+.n-descriptions {
+  .n-descriptions-table-content__label {
+    color: @text-c-1;
+    margin-right: 10px;
+  }
+  .n-descriptions-table-content__content {
+    font-weight: bold;
+  }
+}
+
+.n-form {
+  .n-form-item.n-form-item--left-labelled {
+    &.form-item-label-left .n-form-item-label {
+      text-align: left;
+    }
+    &.form-item-flex-center {
+      display: flex;
+      align-items: center;
+    }
+  }
+  .n-form-item.n-form-item-bold .n-form-item-label {
+    font-weight: 600;
+  }
+  // 改为纵向flex
+  .form-item-flex-col {
+    .n-form-item-blank {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  &.nomessage .n-form-item-feedback-wrapper {
+    min-height: 0 ;
+    display: none ;
+  }
+}
+
+.n-upload-file-list.n-upload-file-list--grid {
+  grid-template-columns: repeat(auto-fill, 35px);
+  .n-upload-file.n-upload-file--image-card-type,
+  .n-upload-trigger.n-upload-trigger--image-card {
+    width: 35px;
+    height: 35px;
+  }
+}
+.n-dynamic-tags {
+  .n-tag {
+    height: 30px;
+    padding: 0 15px;
+    .n-tag__close {
+      position: absolute;
+      color: @main-c;
+      width: 7px;
+      height: 7px;
+      top: 3px;
+      right: 3px;
+    }
+  }
+  .n-button {
+    height: 30px;
+    width: 40px;
+    border: 1px solid @main-c;
+    color: @main-c;
+  }
+  .n-button.n-button--dashed .n-button__border,
+  .n-button.n-button--dashed .n-button__state-border {
+    border-style: hidden !important;
+  }
+}
+
+.n-drawer-mask {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.n-drawer .n-drawer-content {
+  .n-drawer-header {
+    min-height: 66px;
+    background: #F1F1F5;
+    z-index: 100;
+    .n-base-close::before {
+      background-color: unset;
+    }
+    .n-drawer-header__main {
+      display: flex;
+      align-items: center;
+      color: @text-c-0;
+      width:100%;
+    }
+  }
+  // 对于 drawer footer 的按钮样式统一，请使用mixin的.drawer-footer-btn
+}
+
+.n-pagination {
+  .n-input {
+    height: var(--n-item-size);
+    line-height: var(--n-item-size);
+  }
+}
+
+.n-timeline {
+  &.n-timeline--left-placement .n-timeline-item .n-timeline-item-content {
+    margin-left: calc(var(--n-icon-size) + 16px);
+    .n-timeline-item-content__content {
+      color: @text-c-0;
+    }
+  }
+  .n-timeline-item .n-timeline-item-timeline {
+    .n-timeline-item-timeline__line {
+      top: 14px;
+      bottom: 4px;
+      width: 1px;
+    }
+  }
+}
+
+.n-input .n-input__input-el,
+.n-input .n-input__textarea-el,
+.n-input .n-input__input-mirror,
+.n-input .n-input__textarea-mirror,
+.n-input .n-input__separator,
+.n-input .n-input__placeholder {
+  font-weight: 400;
+}

@@ -2,6 +2,27 @@ import { http } from '@/apis'
 import Cookie from 'js-cookie'
 import { defineStore } from 'pinia'
 
+// 获取当前登录用户的所有功能权限集
+export const usePerm = defineStore('perms', {
+  state: () => {
+    return {
+      list: []
+    }
+  },
+  actions: {
+    async getPermItem() {
+      if (this.list && this.list.length) {
+        return this.list
+      }
+      const { data } = await http.post(
+        'admin-api/admin/role/get-all-action-permissions'
+      )
+      this.list = data
+      return this.list
+    }
+  }
+})
+
 export const useUserInfo = defineStore('userInfo', {
   state: () => {
     return {
@@ -30,8 +51,6 @@ export const useUserInfo = defineStore('userInfo', {
       if (this.userInfo.id) {
         return this.userInfo
       }
-      if (!http.defaults.headers.common['token'])
-        http.defaults.headers.common['token'] = Cookie.get('token') as string
       await http.get('admin-api/personal/info').then((res) => {
         this.userInfo = {
           id: res.data.id,

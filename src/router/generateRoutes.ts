@@ -25,7 +25,7 @@ function addRoute(menu, pagesMap) {
     if (vim && !Array.isArray(vim)) {
       const path = vim.route_name
       router.addRoute('layout', {
-        name: path,
+        name: '/' + path,
         path: '/' + path,
         component: pagesMap[path as AsyncPagesKey] || import('../views/404.vue')
       })

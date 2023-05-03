@@ -31,7 +31,7 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/dev': {
-        target: 'https://zfl.online.dev.fyunshan.com', // https://webadmin.release.akusense.cn
+        target: 'https://lingaiapi.online.dev.fyunshan.com/',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/dev/, '')
       }
