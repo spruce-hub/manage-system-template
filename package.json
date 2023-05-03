@@ -34,7 +34,7 @@
     "ofetch": "^1.0.1",
     "pinia": "^2.0.35",
     "spruce-utils": "^0.3.1",
-    "tinymce": "^6.4.1",
+    "tinymce": "5.10.3",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vuedraggable": "^2.24.3"
